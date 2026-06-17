@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(pip install *)",
+      "Bash(uvicorn main:app --port 8000 --log-level warning)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"uvicorn main\")",
+      "Bash(uvicorn main:app --port 8001 --log-level warning)",
+      "Bash(curl -s -X POST http://localhost:8001/api/optimize -H 'Content-Type: application/json' -d '{\"business_model\":\"own\",\"collect_trace\":true,\"top_k\":3}')",
+      "Bash(timeout 5 python -c \"from astar_engine import AStarEngine; import pandas as pd; df = pd.read_csv\\('../supply_chain_data.csv'\\); e = AStarEngine\\(df\\); r = e.optimize\\(top_k=3\\); print\\('Routes found:', len\\(r['results']\\)\\); print\\('First route:', r['results'][0]['supplier'], r['results'][0]['transport_mode'], r['results'][0]['route']\\)\")",
+      "Bash(python *)",
+      "Bash(curl -s http://localhost:8000/api/health)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(uvicorn main:app --host 0.0.0.0 --port 8000 --reload)",
+      "Bash(echo \"Backend PID: $!\")",
+      "Bash(echo \"Frontend PID: $!\")",
+      "Bash(curl -s -X POST http://localhost:8000/api/optimize -H 'Content-Type: application/json' -d '{\"business_model\":\"own\",\"top_k\":3,\"collect_trace\":false}')",
+      "Bash(curl -s -X POST http://localhost:8000/api/pareto -H 'Content-Type: application/json' -d '{\"obj1\":\"margin\",\"obj2\":\"lead_time\",\"business_model\":\"own\"}')"
+    ]
+  }
+}
